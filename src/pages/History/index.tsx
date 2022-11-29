@@ -1,9 +1,20 @@
+// LIB, HOOKS, ETC
+import { useContext } from 'react'
+import { formatDistanceToNow } from 'date-fns'
+
+// COMPONENTS
+import { CyclesContext } from '../../contexts/CyclesContext'
+
+// STLES
 import { HistoryContainer, HistoryList, Status } from './styles'
 
 export function History() {
+  const { cycles } = useContext(CyclesContext)
+
   return (
     <HistoryContainer>
       <h1>My History</h1>
+
       <HistoryList>
         <table>
           <thead>
@@ -15,30 +26,32 @@ export function History() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Study</td>
-              <td>20 minutes</td>
-              <td>2 months ago</td>
-              <td>
-                <Status statusColor="green">Finished</Status>
-              </td>
-            </tr>
-            <tr>
-              <td>Study</td>
-              <td>20 minutes</td>
-              <td>2 months ago</td>
-              <td>
-                <Status statusColor="yellow">Working on</Status>
-              </td>
-            </tr>
-            <tr>
-              <td>Study</td>
-              <td>20 minutes</td>
-              <td>2 months ago</td>
-              <td>
-                <Status statusColor="red">Interrupted</Status>
-              </td>
-            </tr>
+            {cycles.map((cycle) => {
+              return (
+                <tr key={cycle.id}>
+                  <td>{cycle.task}</td>
+                  <td>{cycle.minutesAmount}</td>
+                  <td>
+                    {formatDistanceToNow(cycle.startDate, {
+                      addSuffix: true,
+                    })}
+                  </td>
+                  <td>
+                    {cycle.finishedDate && (
+                      <Status statusColor="green">Finished</Status>
+                    )}
+
+                    {cycle.interruptedDate && (
+                      <Status statusColor="red">Interrupted</Status>
+                    )}
+
+                    {!cycle.finishedDate && !cycle.interruptedDate && (
+                      <Status statusColor="yellow">In Progress</Status>
+                    )}
+                  </td>
+                </tr>
+              )
+            })}
           </tbody>
         </table>
       </HistoryList>
