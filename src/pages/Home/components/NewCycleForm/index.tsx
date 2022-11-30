@@ -6,6 +6,7 @@ import { CyclesContext } from '../../../../contexts/CyclesContext'
 // STYLED
 import { FormContainer, MinutesAmountInput, TaskInput } from './styles'
 
+// MAIN CODE
 export function NewCycleForm() {
   const { activeCycle } = useContext(CyclesContext)
   const { register } = useFormContext()

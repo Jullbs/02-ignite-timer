@@ -8,6 +8,7 @@ import { CyclesContext } from '../../contexts/CyclesContext'
 // STLES
 import { HistoryContainer, HistoryList, Status } from './styles'
 
+// MAIN CODE
 export function History() {
   const { cycles } = useContext(CyclesContext)
 

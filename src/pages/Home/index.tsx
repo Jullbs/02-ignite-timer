@@ -12,7 +12,7 @@ import { NewCycleForm } from './components/NewCycleForm'
 import { Countdown } from './components/Countdown'
 import { CyclesContext } from '../../contexts/CyclesContext'
 
-// STYLED
+// STYLE
 import {
   HomeContainer,
   StartCountdownButton,
@@ -20,7 +20,6 @@ import {
 } from './styles'
 
 // MAIN CODE
-
 const newCycleFormValidationSchema = zod.object({
   task: zod.string().min(1, 'Insert the task'),
   minutesAmount: zod

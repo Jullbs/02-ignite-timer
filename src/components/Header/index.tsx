@@ -1,10 +1,14 @@
+// LIB, HOOKS, ETC
 import { NavLink } from 'react-router-dom'
 
-import { HeaderContainer } from './styles'
-
+// ICONS
 import { Timer, Scroll } from 'phosphor-react'
 import logoIgnite from '../../assets/logo-ignite.svg'
 
+// STYLES
+import { HeaderContainer } from './styles'
+
+// MAIN CODE
 export function Header() {
   return (
     <HeaderContainer>
